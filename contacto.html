@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!--//  Meta Tags //-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Formulario de contacto en PHP y Ajax</title>
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--// CSS FORMULARIO //-->
+    <link rel="stylesheet" href="assets/fonts/font_awesome/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+</head>
+<body>
+
+    <main class="main-area">
+
+        <!--// Contact Section Start //-->
+        <section class="contactame">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-10 envelop-frm">
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <div class="section-heading">
+                                    <h3 class="section-title mt-5">¡CONTÁCTAME!</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-start justify-content-center">
+                            <div class="col-10">
+                                <div class="contact-form-wrap"> <!--Borrar maybe-->
+                                    <form id="contactForm">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="contact-form-group">
+                                                    <input type="text" class="form-control" name="contact_name" id="contactName" placeholder="Nombre">
+                                                    <!-- <i class="far fa-user"></i> -->
+                                                    <div class="form-validate-icons">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="contact-form-group">
+                                                    <input type="text" class="form-control" name="contact_phone" id="contactPhone" placeholder="Teléfono Exp. 05555555555">
+                                                    <!-- <i class="fas fa-phone-volume"></i> -->
+                                                    <div class="form-validate-icons">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="contact-form-group">
+                                                    <input type="text" class="form-control" name="contact_email" id="contactEmail" placeholder="Email">
+                                                    <!-- <i class="far fa-envelope"></i> -->
+                                                    <div class="form-validate-icons">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="contact-form-group">
+                                                    <textarea name="contact_message" id="contactMessage" class="form-control"  placeholder="Mensaje o motivos" cols="20" rows="7"></textarea>
+                                                    <!-- <i class="far fa-envelope-open"></i> -->
+                                                    <div class="form-validate-icons">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-12">
+        
+                                                <!-- MENSAJES DEL FORMULARIO -->
+                                                <div class="empty-form text-center" style="display: none;"><span>Por favor complete los campos obligatorios</span></div>
+                                                <div class="terms-alert text-center" style="display: none;"><span>Por favor acepte los terminos</span></div>
+                                                <div class="subject-alert text-center" style="display: none;"><span>Por favor seleccione Asunto</span></div>
+                                                <div class="security-alert text-center" style="display: none;"><span>El Código de Seguridad no coincide !</span></div>
+                                                <div class="email-invalid text-center" style="display: none;"><span>Ingrese una dirección de correo electrónico válida. ejemplo@gmail.com</span></div>
+                                                <div class="phone-invalid text-center" style="display: none;"><span>Introduzca un número de teléfono válido. 200-255-4444</span></div>
+        
+                                                <div class="contact-btn-left text-center mb-5">
+                                                    <button type="submit" id="contactBtn" class="default-button">ENVIÁR</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> <!--Borrar maybe-->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--// Contact Section End //-->
+
+        <!-- Success Modal Start -->
+        <div class="modal fade custom-modal" id="formSuccessModal" tabindex="-1" role="dialog" aria-labelledby="formSuccessModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                    <div class="modal-header success">
+                        <h5 class="modal-title" id="formSuccessModalLabel">Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-popup-inner">
+                            <div class="form-icon success">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                    <circle class="path circle" fill="none"  stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                                    <polyline class="path check" fill="none" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                                </svg>
+                            </div>
+                            <div class="form-body">
+                                <p>
+                                    Tu mensaje ha sido enviado, nos pondremos en contacto contigo lo antes posible.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="popup-btn success" data-bs-dismiss="modal">Ok</a>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Success Modal End -->
+
+        <!-- Danger Modal Start -->
+        <div class="modal fade custom-modal" id="formDangerModal" tabindex="-1" role="dialog" aria-labelledby="formDangerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                    <div class="modal-header danger">
+                        <h5 class="modal-title" id="formDangerModalLabel">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-popup-inner">
+                            <div class="form-icon danger">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                    <circle class="path circle" fill="none" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                                    <line class="path line" fill="none" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                                    <line class="path line" fill="none" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                                </svg>
+                            </div>
+                            <div class="form-body">
+                                <p>
+                                    Error! Algo salió mal. Hubo un error al enviar su mensaje.
+                                    <span id="error_message"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="popup-btn danger" data-bs-dismiss="modal">Cerrar</a>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Danger Modal End -->
+
+        <!--// Footer Start //-->
+        <footer class="footer">
+            <div class="copyright-wrap">
+                <div class="container">
+                    <div class="copyright-inner">
+                        <p class="copyright-text">© Copyright</p>
+                    </div>
+                </div>
+                <!--// .container //-->
+            </div>
+        </footer>
+        <!--// Footer End //-->
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+    <!--// Javascript FORMULARIO //-->
+    <script src="assets/js/custom.select.plugin.js"></script>
+    <script src="assets/js/jquery.conformy.plugin.js"></script>
+    <script src="assets/js/main.js"></script>
+
+   
+</body>
+</html>
